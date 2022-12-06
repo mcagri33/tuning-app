@@ -32,7 +32,6 @@
                 </li>
 
                 @if(count($global_cms_language_data)>1)
-                    <div class="language"><span>{{SELECT_LANG}}</span>
                         <form action="{{route('panel.change_language')}}" method="post">
                             @csrf
                             <select name="short_name" onchange="this.form.submit()">

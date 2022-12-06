@@ -42,16 +42,17 @@
                     @endcan
             </ul>
         </li>
-        @endcan        <li>
+        @endcan
+
+        @can('create language')
+        <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                 </div>
                 <div class="menu-title">Language Management</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bi bi-circle"></i>Language List</a>
-                </li>
-                <li> <a href="#"><i class="bi bi-circle"></i>Language Add</a>
+                <li> <a href="{{route('admin.language.index')}}"><i class="bi bi-circle"></i>Language List</a>
                 </li>
             </ul>
         </li>
@@ -66,7 +67,7 @@
                 <li> <a href="#"><i class="bi bi-circle"></i>Menus</a>
             </ul>
         </li>
-
+        @endcan
 
 
     </ul>

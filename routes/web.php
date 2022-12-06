@@ -27,8 +27,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'role:tuner'])->name('panel.')->prefix('panel')->group(function (){
+Route::middleware(['auth'])->name('panel.')->prefix('panel')->group(function (){
     Route::get('/',[IndexController::class,'index'])->name('index');
+    Route::post('/change/lang', [LanguageController::class, 'admin_swich_language'])
+        ->name('change_language');
 });
 
 Route::group(['prefix' => 'panel/role', 'middleware' => 'auth'], function () {
@@ -66,12 +68,17 @@ Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function ()
         ->name('admin.language.index');
     Route::post('/store', [LanguageController::class, 'store'])
         ->name('admin.language.store');
-    Route::get('/edit/{id}', [LanguageController::class, 'edit'])
+    Route::get('/edit/{uuid}', [LanguageController::class, 'edit'])
         ->name('admin.language.edit');
-    Route::post('/update', [LanguageController::class, 'update'])
+    Route::post('/update/{uuid}', [LanguageController::class, 'update'])
         ->name('admin.language.update');
-    Route::get('/delete/{id}', [LanguageController::class, 'destroy'])
+    Route::get('/delete/{uuid}', [LanguageController::class, 'destroy'])
         ->name('admin.language.delete');
+    Route::get('/translation/{id}', [LanguageController::class, 'translation'])
+        ->name('admin.translation.index');
+    Route::post('/translation/update/{id}', [LanguageController::class, 'translation_update'])
+        ->name('admin.translation.update');
+
 });
 
 Route::group(['prefix' => 'panel/user', 'middleware' => 'auth'], function () {
@@ -79,11 +86,11 @@ Route::group(['prefix' => 'panel/user', 'middleware' => 'auth'], function () {
         ->name('admin.user.index');
     Route::post('/store', [UserController::class, 'store'])
         ->name('admin.user.store');
-    Route::get('/edit/{id}', [UserController::class, 'edit'])
+    Route::get('/edit/{uuid}', [UserController::class, 'edit'])
         ->name('admin.user.edit');
     Route::post('/update/{uuid}', [UserController::class, 'update'])
         ->name('admin.user.update');
-    Route::get('/delete/{id}', [UserController::class, 'destroy'])
+    Route::get('/delete/{uuid}', [UserController::class, 'destroy'])
         ->name('admin.user.delete');
     Route::post('/{user}/roles', [UserController::class, 'assignRole'])
         ->name('admin.users.roles');

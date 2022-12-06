@@ -66,6 +66,17 @@
                                     </div>
 
                                     <div class="col-12">
+                                        <label class="form-label">Status</label>
+                                        <select class="form-select" name="status">
+                                            <option value="1">Active</option>
+                                            <option value="0">Passive</option>
+                                        </select>
+                                        @error("status")
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
                                         <div class="d-grid">
                                             <button class="btn btn-primary" type="submit">Add</button>
                                         </div>
@@ -86,6 +97,7 @@
                                                 <th>User Name</th>
                                                 <th>Email</th>
                                                 <th>Role</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -98,15 +110,21 @@
                                                     <td>{{$user->name}}</td>
                                                     <td>{{$user->email}}</td>
                                                     <td>{{$user->getRoleNames()->implode(',')}}</td>
-
+                                                    @if($user->status == 1)
+                                                        <td><span class="badge rounded-pill bg-success">Active</span>
+                                                        </td>
+                                                    @else
+                                                        <td><span class="badge rounded-pill bg-warning">Passive</span>
+                                                        </td>
+                                                    @endif
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
-                                                            <a href="{{route('admin.user.edit',$user->id)}}"
+                                                            <a href="{{route('admin.user.edit',$user->uuid)}}"
                                                                class="text-warning" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
                                                                data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                     class="bi bi-pencil-fill"></i></a>
-                                                            <a href="{{route('admin.user.delete',$user->id)}}"
+                                                            <a href="{{route('admin.user.delete',$user->uuid)}}"
                                                                class="text-danger" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
                                                                data-bs-original-title="Delete" aria-label="Delete"><i

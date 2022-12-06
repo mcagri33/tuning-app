@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -39,8 +40,10 @@ class UserController extends Controller
         ]);
         $user = User::create([
             'name' => $request->name,
+            'uuid' => Str::uuid(),
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'status' => $request->status
         ]);
         $user->assignRole($request->role);
 
@@ -51,43 +54,37 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return View
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        $userFind = User::find($id);
+        $userFind =User::where('uuid', $uuid)->first();
         $roles = Role::all();
         $permissions = Permission::all();
 
         return view('admin.user.edit',compact('userFind','roles','permissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return RedirectResponse
-     */
-    public function update(Request $request)
+
+    public function update(Request $request,$uuid)
     {
-        $userId = User::findOrFail($request->id);
+        $userId = User::where('uuid', $uuid)->first();
         $userId->name = $request->name;
         $userId->email = $request->name;
         $userId->password = Hash::make($request->password);
-        $userId->update();
+        $userId->status =$request->status;
+        $userId->save();
         return redirect()->route('admin.user.index')->with('success', 'Success Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $userDelete = User::findOrFail($id);
+        $userDelete = User::where('uuid', $uuid)->first();
         $userDelete->delete();
         return redirect()->route('admin.user.index')->with('success', 'Success Deleted!');
     }

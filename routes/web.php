@@ -29,7 +29,7 @@ Route::middleware(['auth', 'role:tuner'])->name('panel.')->prefix('panel')->grou
     Route::get('/',[IndexController::class,'index'])->name('index');
 });
 
-Route::group(['prefix' => 'panel/role', 'middleware' => 'auth', 'role:admin'], function () {
+Route::group(['prefix' => 'panel/role', 'middleware' => 'auth'], function () {
     Route::get('/', [RoleController::class, 'index'])
         ->name('admin.role.index');
     Route::post('/store', [RoleController::class, 'store'])
@@ -46,7 +46,7 @@ Route::group(['prefix' => 'panel/role', 'middleware' => 'auth', 'role:admin'], f
         ->name('admin.roles.permissions.revoke');
 });
 
-Route::group(['prefix' => 'panel/permissions', 'middleware' => 'auth', 'role:admin'], function () {
+Route::group(['prefix' => 'panel/permissions', 'middleware' => 'auth'], function () {
     Route::get('/', [PermissionController::class, 'index'])
         ->name('admin.permissions.index');
     Route::post('/store', [PermissionController::class, 'store'])
@@ -59,14 +59,14 @@ Route::group(['prefix' => 'panel/permissions', 'middleware' => 'auth', 'role:adm
         ->name('admin.permissions.delete');
 });
 
-Route::group(['prefix' => 'panel/user', 'middleware' => 'auth', 'role:admin'], function () {
+Route::group(['prefix' => 'panel/user', 'middleware' => 'auth'], function () {
     Route::get('/', [UserController::class, 'index'])
         ->name('admin.user.index');
     Route::post('/store', [UserController::class, 'store'])
         ->name('admin.user.store');
     Route::get('/edit/{id}', [UserController::class, 'edit'])
         ->name('admin.user.edit');
-    Route::post('/update', [UserController::class, 'update'])
+    Route::post('/update/{uuid}', [UserController::class, 'update'])
         ->name('admin.user.update');
     Route::get('/delete/{id}', [UserController::class, 'destroy'])
         ->name('admin.user.delete');

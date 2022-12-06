@@ -18,9 +18,11 @@ class AdminSeeder extends Seeder
     {
        $user = User::create([
             'name' => 'cagri',
+            'uuid' => Str::uuid(),
             'email' => 'mehmetcagrikaratas@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('669669bc'),
+            'status' => 1
         ]);
         $user->assignRole('accounting','tuner', 'admin');
 

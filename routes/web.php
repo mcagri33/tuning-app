@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LanguageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +59,19 @@ Route::group(['prefix' => 'panel/permissions', 'middleware' => 'auth'], function
         ->name('admin.permissions.update');
     Route::get('/delete/{id}', [PermissionController::class, 'destroy'])
         ->name('admin.permissions.delete');
+});
+
+Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {
+    Route::get('/', [LanguageController::class, 'index'])
+        ->name('admin.language.index');
+    Route::post('/store', [LanguageController::class, 'store'])
+        ->name('admin.language.store');
+    Route::get('/edit/{id}', [LanguageController::class, 'edit'])
+        ->name('admin.language.edit');
+    Route::post('/update', [LanguageController::class, 'update'])
+        ->name('admin.language.update');
+    Route::get('/delete/{id}', [LanguageController::class, 'destroy'])
+        ->name('admin.language.delete');
 });
 
 Route::group(['prefix' => 'panel/user', 'middleware' => 'auth'], function () {

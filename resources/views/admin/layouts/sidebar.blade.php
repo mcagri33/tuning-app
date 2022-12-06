@@ -23,6 +23,7 @@
                 </li>
             </ul>
         </li>
+        @can('create user')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-grid-fill"></i>
@@ -30,13 +31,18 @@
                 <div class="menu-title">User Management</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bi bi-circle"></i>Users</a></li>
-                <li> <a href="{{route('admin.role.index')}}"><i class="bi bi-circle"></i>Roles</a></li>
-                <li> <a href="{{route('admin.permissions.index')}}"><i class="bi bi-circle"></i>Permissions</a></li>
-
+                @can('create user')
+                <li> <a href="{{route('admin.user.index')}}"><i class="bi bi-circle"></i>Users</a></li>
+                @endcan
+                    @can('create roles')
+                        <li> <a href="{{route('admin.role.index')}}"><i class="bi bi-circle"></i>Roles</a></li>
+                    @endcan
+                    @can('create permission')
+                    <li> <a href="{{route('admin.permissions.index')}}"><i class="bi bi-circle"></i>Permissions</a></li>
+                    @endcan
             </ul>
         </li>
-        <li>
+        @endcan        <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                 </div>

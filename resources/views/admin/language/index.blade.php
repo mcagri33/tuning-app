@@ -30,7 +30,7 @@
                                 <form class="row g-3" action="{{route('admin.language.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="col-12">
-                                        <label class="form-label">Flag</label>
+                                        <label class="form-label">{{Flag}}</label>
                                         <input type="file" class="form-control" name="flag">
                                         @error("flag")
                                         <span class="text-danger">{{$message}}</span>
@@ -38,7 +38,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Language Name</label>
+                                        <label class="form-label">{{Language_Name}}</label>
                                         <input type="text" class="form-control" name="name" value="{{old('name')}}"
                                                placeholder="Language Name">
                                         @error("name")
@@ -47,7 +47,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Short Name</label>
+                                        <label class="form-label">{{Short_Name}}</label>
                                         <input type="text" class="form-control" name="short_name" value="{{old('short_name')}}"
                                                placeholder="Short Name">
                                         @error("short_name")
@@ -56,10 +56,10 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Is Default ?</label>
+                                        <label class="form-label">{{Is_Default}}</label>
                                         <select class="form-select" name="is_default">
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="Yes">{{Yes}}</option>
+                                            <option value="No">{{No}}</option>
                                         </select>
                                         @error("is_default")
                                         <span class="text-danger">{{$message}}</span>
@@ -67,10 +67,10 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">{{Status}}</label>
                                         <select class="form-select" name="status">
-                                            <option value="1">Active</option>
-                                            <option value="0">Passive</option>
+                                            <option value="1">{{Active}}</option>
+                                            <option value="0">{{Passive}}</option>
                                         </select>
                                         @error("status")
                                         <span class="text-danger">{{$message}}</span>
@@ -79,7 +79,7 @@
 
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button class="btn btn-primary" type="submit">Add</button>
+                                            <button class="btn btn-primary" type="submit">{{Add}}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -94,12 +94,13 @@
                                         @if(count($languages)>0)
                                             <thead class="table-light">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Language Name</th>
-                                                <th>Short Name</th>
-                                                <th>Translation</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>{{Id}}</th>
+                                                <th>{{Language_Name}}</th>
+                                                <th>{{Short_Name}}</th>
+                                                <th>{{Translation}}</th>
+                                                <th>{{Is_Default}}</th>
+                                                <th>{{Status}}</th>
+                                                <th>{{Action}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -111,26 +112,35 @@
                                                     <td>{{$language->name}}</td>
                                                     <td>{{$language->short_name}}</td>
                                                     <td>
-                                                        <a href="{{route('admin.translation.index',$language->uuid)}}" class="btn-primary">Translation</a>
+                                                        <a href="{{route('admin.translation.index',$language->uuid)}}" class="btn-primary">{{Translation}}</a>
                                                     </td>
-                                                @if($language->status == 1)
-                                                        <td><span class="badge rounded-pill bg-success">Active</span>
+                                                    @if($language->is_default == "Yes")
+                                                        <td><span class="badge rounded-pill bg-success">{{Yes}}</span>
                                                         </td>
                                                     @else
-                                                        <td><span class="badge rounded-pill bg-warning">Passive</span>
+                                                        <td><span class="badge rounded-pill bg-warning">{{No}}</span>
                                                         </td>
                                                     @endif
+
+                                                    @if($language->status == 1)
+                                                        <td><span class="badge rounded-pill bg-success">{{Active}}</span>
+                                                        </td>
+                                                    @else
+                                                        <td><span class="badge rounded-pill bg-warning">{{Passive}}</span>
+                                                        </td>
+                                                    @endif
+
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
-                                                            <a href="{{route('admin.language.edit',$language->uuid)}}"
+                                                          {{--  <a href="{{route('admin.language.edit',$language->uuid)}}"
                                                                class="text-warning" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Edit info" aria-label="Edit"><i
-                                                                    class="bi bi-pencil-fill"></i></a>
+                                                               data-bs-original-title="Edit info" aria-label="{{Edit}}"><i
+                                                                    class="bi bi-pencil-fill"></i></a>--}}
                                                             <a href="{{route('admin.language.delete',$language->uuid)}}"
                                                                class="text-danger" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Delete" aria-label="Delete"><i
+                                                               data-bs-original-title="Delete" aria-label="{{Delete}}"><i
                                                                     class="bi bi-trash-fill"></i></a>
                                                         </div>
                                                     </td>

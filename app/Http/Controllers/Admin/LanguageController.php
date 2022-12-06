@@ -21,7 +21,10 @@ class LanguageController extends Controller
     public function index()
     {
         Helpers::read_json();
-        $languages = Language::paginate(10);
+        $languages = Language::where('is_default', 'yes')
+            ->orderBy('created_at','desc')
+            ->union(Language::where('is_default', 'no')->orderBy('created_at', 'desc'))
+            ->paginate(10);
         return view('admin.language.index',compact('languages'));
     }
 
@@ -89,7 +92,6 @@ class LanguageController extends Controller
         $request->validate([
             'name' => 'required',
             'short_name' => 'required',
-            'flag' => 'required|image|mimes:jpg,jpeg,png,gif',
         ]);
 
         $langId = Language::where('uuid', $uuid)->first();
@@ -139,10 +141,14 @@ class LanguageController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy($uuid)
+    public function destroy(Request $request, $uuid)
     {
+
         $langDelete =  Language::where('uuid', $uuid)->first();
         $langDelete->delete();
+        if ($request->is_default == 'Yes') {
+            DB::table('languages')->update(['is_default' => 'No']);
+        }
         return redirect()->route('admin.language.index')->with('success', 'Success Deleted!');
     }
 

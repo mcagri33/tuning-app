@@ -33,9 +33,9 @@
                     <table class="table align-middle">
                         <thead class="table-secondary">
                         <tr>
-                            <th>No</th>
-                            <th>Key</th>
-                            <th>Value</th>
+                            <th>{{Id}}</th>
+                            <th>{{Key}}</th>
+                            <th>{{Value}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,14 +47,13 @@
                                     <td>
                                         <input type="hidden" name="arr_key[]" class="form-control" value="{{$key}}">
                                         <input type="text" name="arr_value[]" class="form-control" value="{{$value}}">
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                            <button type="submit" class="btn btn-primary">{{Update}}</button>
                         </div>
                     </form>
                 </div>

@@ -1,26 +1,36 @@
 {
-    "SELECT_LANG" : "Select Language",
-    "News" : "News",
-    "Connect_Us": "Connect Us",
-    "Support": "Support",
-    "On_Press": "On Press",
-    "Career": "Career",
-    "HOME": "HOME",
-    "COMPANY": "COMPANY",
-    "About_Us": "About Us",
-    "Partners": "Partners",
-    "Galery": "Galery",
-    "PROJECTS": "PROJECTS",
-    "SERVICES": "SERVICES",
-    "NEWS" : "NEWS",
-    "CONTACT": "CONTACT",
-    "Read_More": "Read More",
-    "LOAD_MORE" : "LOAD MORE",
-    "GET_QUOTE" : "GET QUOTE",
-    "Text_Call" : "Any questions? Call us.",
-    "NEWSLETTER" : "NEWSLETTER",
-    "SUBMIT" : "SUBMIT",
-    "OUR_SERVICES" : "OUR SERVICES"
+    "Add" : "Ekle",
+    "Update": "Güncelle",
+    "Name" : "İsim",
+    "Id" : "#",
+    "Yes": "Evet",
+    "No" : "Hayır",
+    "Active" : "Aktif",
+    "Passive" : "Pasif",
+    "Status" : "Durum",
+    "Action" : "İşlemler",
+    "Edit" : "Düzenle",
+    "Delete": "Sil",
+    "SELECT_LANG" : "Dil Seçiniz",
+    "Flag" : "Bayrak",
+    "Language_Name": "Dil Adı",
+    "Short_Name" : "Kısa Adı",
+    "Is_Default" : "Varsayılan ?",
+    "Translation" : "Çeviri",
+    "Key" : "Anahtar",
+    "Value" : "Değer",
+    "Close" : "Kapat",
+    "Logout" : "Çıkış Yap",
+    "Dashboard" : "Panel",
+    "User_Management" : "Kullanıcı Yönetimi",
+    "Users" : "Kullanıcılar",
+    "Roles": "Roller",
+    "Permissions" : "İzinler",
+    "Language_Management" : "Dil Yönetimi"
+
+
+
+
 
 
 }

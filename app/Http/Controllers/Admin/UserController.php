@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -21,6 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        Helpers::read_json();
         $users = User::paginate(10);
         $roles = Role::all();
         return view('admin.user.index',compact('users','roles'));
@@ -58,6 +60,7 @@ class UserController extends Controller
      */
     public function edit($uuid)
     {
+        Helpers::read_json();
         $userFind =User::where('uuid', $uuid)->first();
         $roles = Role::all();
         $permissions = Permission::all();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\Helpers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class RoleController extends Controller
 {
     public function index()
     {
+        Helpers::read_json();
         $roles = Role::paginate(10);
         return view('admin.role.index',compact('roles'));
     }
@@ -45,6 +47,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        Helpers::read_json();
         $roleFind = Role::find($id);
         $permissions = Permission::all();
         return view('admin.role.edit',compact('roleFind','permissions'));

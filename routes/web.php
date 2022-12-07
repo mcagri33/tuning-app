@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\CarBrandController;
+use App\Http\Controllers\Admin\CarModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,19 @@ Route::group(['prefix' => 'panel/cbrand', 'middleware' => 'auth'], function () {
         ->name('admin.cbrand.update');
     Route::get('/delete/{id}', [CarBrandController::class, 'destroy'])
         ->name('admin.cbrand.delete');
+});
+
+Route::group(['prefix' => 'panel/cmodel', 'middleware' => 'auth'], function () {
+    Route::get('/', [CarModelController::class, 'index'])
+        ->name('admin.cmodel.index');
+    Route::post('/store', [CarModelController::class, 'store'])
+        ->name('admin.cmodel.store');
+    Route::get('/edit/{uuid}', [CarModelController::class, 'edit'])
+        ->name('admin.cmodel.edit');
+    Route::post('/update/{uuid}', [CarModelController::class, 'update'])
+        ->name('admin.cmodel.update');
+    Route::get('/delete/{id}', [CarModelController::class, 'destroy'])
+        ->name('admin.cmodel.delete');
 });
 
 Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {

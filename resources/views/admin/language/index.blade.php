@@ -100,7 +100,9 @@
                                                 <th>{{Translation}}</th>
                                                 <th>{{Is_Default}}</th>
                                                 <th>{{Status}}</th>
+                                                @if(count($languages)>1)
                                                 <th>{{Action}}</th>
+                                                @endif
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -129,7 +131,7 @@
                                                         <td><span class="badge rounded-pill bg-warning">{{Passive}}</span>
                                                         </td>
                                                     @endif
-
+                                                    @if(count($languages)>1)
                                                     <td>
                                                         <div class="d-flex align-items-center gap-3 fs-6">
                                                           {{--  <a href="{{route('admin.language.edit',$language->uuid)}}"
@@ -137,11 +139,13 @@
                                                                data-bs-placement="bottom" title=""
                                                                data-bs-original-title="Edit info" aria-label="{{Edit}}"><i
                                                                     class="bi bi-pencil-fill"></i></a>--}}
+
                                                             <a href="{{route('admin.language.delete',$language->uuid)}}"
                                                                class="text-danger" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
                                                                data-bs-original-title="Delete" aria-label="{{Delete}}"><i
                                                                     class="bi bi-trash-fill"></i></a>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','Permission Edit')
+@section('title')
+    {{Permissions}}
+@endsection
 @section('admin')
 
     <main class="page-content">

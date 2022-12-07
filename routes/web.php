@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\CarBrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,19 @@ Route::group(['prefix' => 'panel/permissions', 'middleware' => 'auth'], function
         ->name('admin.permissions.update');
     Route::get('/delete/{id}', [PermissionController::class, 'destroy'])
         ->name('admin.permissions.delete');
+});
+
+Route::group(['prefix' => 'panel/cbrand', 'middleware' => 'auth'], function () {
+    Route::get('/', [CarBrandController::class, 'index'])
+        ->name('admin.cbrand.index');
+    Route::post('/store', [CarBrandController::class, 'store'])
+        ->name('admin.cbrand.store');
+    Route::get('/edit/{uuid}', [CarBrandController::class, 'edit'])
+        ->name('admin.cbrand.edit');
+    Route::post('/update/{uuid}', [CarBrandController::class, 'update'])
+        ->name('admin.cbrand.update');
+    Route::get('/delete/{id}', [CarBrandController::class, 'destroy'])
+        ->name('admin.cbrand.delete');
 });
 
 Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {

@@ -27,12 +27,16 @@
     "Roles": "Roller",
     "Permissions" : "İzinler",
     "Language_Management" : "Dil Yönetimi",
-    "Car_Brand_Name" : "Brand Name",
+    "Car_Brand_Name" : "Araç Marka Adı",
     "User_Name" : "Kullanıcı Adı",
     "Email" : "Email",
     "Role_Permissions" : "Rol İzinleri",
-    "Permission": "İzinler"
-
-
-
+    "Permission": "İzinler",
+    "General_Setting" : "Genel Ayarlar",
+    "Car_Brands" : "Araç Markaları",
+    "Car_Models" : "Araç Modelleri",
+    "Car_Brains" : "Araç Beyinleri",
+    "Role_Name" : "Rol Adı",
+    "Permision_Name" : "İzin Adı",
+    "Found_Text" : "Data Bulunamadı!"
 }

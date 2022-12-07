@@ -1,5 +1,4 @@
 {
-
     "Add" : "Add",
     "Update": "Update",
     "Name" : "Name",
@@ -28,11 +27,20 @@
     "Roles": "Roles",
     "Permissions" : "Permissions",
     "Language_Management" : "Language Management",
-    "Brand_Name" : "Brand Name",
+    "Car_Brand_Name" : "Car Brand Name",
     "User_Name" : "User Name",
     "Email" : "Email",
     "Role_Permissions" : "Role Permissions",
-    "Permission" : "Permission"
+    "Permission" : "Permission",
+    "General_Setting" : "General Settings",
+    "Car_Brands" : "Car Brands",
+    "Car_Models" : "Car Models",
+    "Car_Brains" : "Car Brains",
+    "Role_Name" : "Role Name",
+    "Permision_Name" : "Permision Name",
+    "Found_Text" : "No Data Found!"
+
+
 
 
 

@@ -47,6 +47,27 @@
             </a>
         </li>
         @endcan
+
+        @can('settings')
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                </div>
+                <div class="menu-title">{{General_Setting}}</div>
+            </a>
+            <ul>
+                @can('create car brands')
+                    <li> <a href="{{route('admin.cbrand.index')}}"><i class="bi bi-circle"></i>{{Car_Brands}}</a></li>
+                @endcan
+                @can('create car models')
+                    <li> <a href="#"><i class="bi bi-circle"></i>{{Car_Models}}</a></li>
+                @endcan
+                @can('create car brains')
+                    <li> <a href="#"><i class="bi bi-circle"></i>{{Car_Brains}}</a></li>
+                @endcan
+            </ul>
+        </li>
+        @endcan
         <li class="menu-label">Modüller</li>
 
 

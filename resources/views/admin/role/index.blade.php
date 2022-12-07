@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','Role')
+@section('title')
+    {{Role_Name}}
+@endsection
 @section('admin')
     <main class="page-content">
         <!--breadcrumb-->
@@ -30,7 +32,7 @@
                                 <form class="row g-3" action="{{route('admin.role.store')}}" method="post">
                                     @csrf
                                     <div class="col-12">
-                                        <label class="form-label">Role Name</label>
+                                        <label class="form-label">{{Role_Name}}</label>
                                         <input type="text" class="form-control" name="name" value="{{old('name')}}"
                                                placeholder="Role Name">
                                         @error("name")

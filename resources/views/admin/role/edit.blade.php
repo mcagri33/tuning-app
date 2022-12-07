@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','Role Edit')
+@section('title')
+    {{Role_Name}}
+@endsection
 @section('admin')
 
     <main class="page-content">
@@ -60,7 +62,7 @@
                                             @csrf
                                             <div class="sm:col-span-6">
                                                 <label for="permission"
-                                                       class="block text-sm font-medium text-gray-700">Permission</label>
+                                                       class="block text-sm font-medium text-gray-700">{{Permission}}</label>
                                                 <select id="permission" name="permission" autocomplete="permission-name"
                                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                                     @foreach ($permissions as $permission)
@@ -73,7 +75,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary px-4">Update</button>
+                                        <button type="submit" class="btn btn-primary px-4">{{Update}}</button>
                                     </div>
                             </form>
                         </div>

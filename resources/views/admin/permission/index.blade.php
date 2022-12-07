@@ -1,5 +1,8 @@
 @extends('admin.admin_master')
-@section('title','Permission')
+@section('title')
+    {{Permissions}}
+@endsection
+
 @section('admin')
 
         <main class="page-content">
@@ -31,7 +34,7 @@
                                     <form class="row g-3" action="{{route('admin.permissions.store')}}" method="post">
                                         @csrf
                                         <div class="col-12">
-                                            <label class="form-label">Permision Name</label>
+                                            <label class="form-label">{{Permision_Name}}</label>
                                             <input type="text" class="form-control" name="name" value="{{old('name')}}"
                                                    placeholder="Permision Name">
                                             @error("name")
@@ -41,7 +44,7 @@
 
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn btn-primary" type="submit">Add</button>
+                                                <button class="btn btn-primary" type="submit">{{Add}}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -75,12 +78,12 @@
                                                                 <a href="{{route('admin.permissions.edit',$permission->id)}}"
                                                                    class="text-warning" data-bs-toggle="tooltip"
                                                                    data-bs-placement="bottom" title=""
-                                                                   data-bs-original-title="Edit info" aria-label="Edit"><i
+                                                                   data-bs-original-title="Edit info" aria-label="{{Edit}}"><i
                                                                         class="bi bi-pencil-fill"></i></a>
                                                                 <a href="{{route('admin.permissions.delete',$permission->id)}}"
                                                                    class="text-danger" data-bs-toggle="tooltip"
                                                                    data-bs-placement="bottom" title=""
-                                                                   data-bs-original-title="Delete" aria-label="Delete"><i
+                                                                   data-bs-original-title="Delete" aria-label="{{Delete}}"><i
                                                                         class="bi bi-trash-fill"></i></a>
                                                             </div>
                                                         </td>

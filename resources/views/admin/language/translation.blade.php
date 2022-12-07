@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','Translation' )
+@section('title')
+    {{Translation}}
+@endsection
 @section('admin')
 
     <main class="page-content">

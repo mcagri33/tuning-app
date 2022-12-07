@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','Language')
+@section('title')
+    {{Language_Management}}
+@endsection
 @section('admin')
     <main class="page-content">
         <!--breadcrumb-->

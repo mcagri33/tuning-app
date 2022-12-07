@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-@section('title','User Edit')
+@section('title')
+    {{Users}}
+@endsection
 @section('admin')
 
     <main class="page-content">

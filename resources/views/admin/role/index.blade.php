@@ -40,7 +40,7 @@
 
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button class="btn btn-primary" type="submit">Add</button>
+                                            <button class="btn btn-primary" type="submit">{{Add}}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -55,9 +55,9 @@
                                         @if(count($roles)>0)
                                             <thead class="table-light">
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>{{Id}}</th>
+                                                <th>{{Name}}</th>
+                                                <th>{{Action}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -74,12 +74,12 @@
                                                             <a href="{{route('admin.role.edit',$role->id)}}"
                                                                class="text-warning" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Edit info" aria-label="Edit"><i
+                                                               data-bs-original-title="Edit info" aria-label="{{Edit}}"><i
                                                                     class="bi bi-pencil-fill"></i></a>
                                                             <a href="{{route('admin.role.delete',$role->id)}}"
                                                                class="text-danger" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Delete" aria-label="Delete"><i
+                                                               data-bs-original-title="Delete" aria-label="{{Delete}}"><i
                                                                     class="bi bi-trash-fill"></i></a>
                                                         </div>
                                                     </td>
@@ -87,7 +87,7 @@
                                             @endforeach
                                             </tbody>
                                         @else
-                                            No Data Found !
+                                            {{Found_Text}}
                                         @endif
                                     </table>
                                 </div>

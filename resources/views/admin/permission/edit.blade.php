@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-4">Update</button>
+                                    <button type="submit" class="btn btn-primary px-4">{{Update}}</button>
                                 </div>
                             </form>
                         </div>

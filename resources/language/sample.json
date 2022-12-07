@@ -27,7 +27,13 @@
     "Users" : "Users",
     "Roles": "Roles",
     "Permissions" : "Permissions",
-    "Language_Management" : "Language Management"
+    "Language_Management" : "Language Management",
+    "Brand_Name" : "Brand Name",
+    "User_Name" : "User Name",
+    "Email" : "Email",
+    "Role_Permissions" : "Role Permissions",
+    "Permission" : "Permission"
+
 
 
 }

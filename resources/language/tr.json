@@ -26,5 +26,13 @@
     "Users" : "Kullanıcılar",
     "Roles": "Roller",
     "Permissions" : "İzinler",
-    "Language_Management" : "Dil Yönetimi"
+    "Language_Management" : "Dil Yönetimi",
+    "Car_Brand_Name" : "Brand Name",
+    "User_Name" : "Kullanıcı Adı",
+    "Email" : "Email",
+    "Role_Permissions" : "Rol İzinleri",
+    "Permission": "İzinler"
+
+
+
 }

@@ -30,18 +30,18 @@
                                 @csrf
                                 <input type="hidden" name="id" value="{{$roleFind->id}}">
                                 <div class="col-12">
-                                    <label class="form-label">Name</label>
+                                    <label class="form-label">{{Name}}</label>
                                     <input type="text" name="name" class="form-control" value="{{$roleFind->name}}" placeholder="Name">
                                     @error("name")
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-4">Update</button>
+                                    <button type="submit" class="btn btn-primary px-4">{{Update}}</button>
                                 </div>
                             </form>
                                 <div class="mt-6 p-2 bg-slate-100">
-                                    <h2 class="text-2xl font-semibold">Role Permissions</h2>
+                                    <h2 class="text-2xl font-semibold">{{Role_Permissions}}</h2>
                                     <div class="flex space-x-2 mt-4 p-2">
                                         @if ($roleFind->permissions)
                                             @foreach ($roleFind->permissions as $role_permission)

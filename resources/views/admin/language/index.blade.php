@@ -152,7 +152,7 @@
                                             @endforeach
                                             </tbody>
                                         @else
-                                            No Data Found !
+                                            {{Found_Text}}
                                         @endif
                                     </table>
                                 </div>

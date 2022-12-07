@@ -58,8 +58,12 @@
                                 <div class="col-12">
                                     <label class="form-label">{{Is_Default}}</label>
                                     <select class="form-select" name="is_default">
-                                        <option value="Yes" {{$languageFind->is_default == "Yes" ? "selected" : ""}}>Yes</option>
-                                        <option value="No" {{$languageFind->is_default ==  "No"  ? "selected" : ""}}>No</option>
+                                        <option value="Yes" {{$languageFind->is_default == "Yes" ? "selected" : ""}}>
+                                            {{Yes}}
+                                        </option>
+                                        <option value="No" {{$languageFind->is_default ==  "No"  ? "selected" : ""}}>
+                                            {{No}}
+                                        </option>
                                     </select>
                                     @error("is_default")
                                     <span class="text-danger">{{$message}}</span>

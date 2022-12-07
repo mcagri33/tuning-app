@@ -56,9 +56,9 @@
                                             @if(count($permissions)>0)
                                                 <thead class="table-light">
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Action</th>
+                                                    <th>{{Id}}</th>
+                                                    <th>{{Name}}</th>
+                                                    <th>{{Action}}</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -88,7 +88,7 @@
                                                 @endforeach
                                                 </tbody>
                                             @else
-                                                No Data Found !
+                                                {{Found_Text}}
                                             @endif
                                         </table>
                                     </div>

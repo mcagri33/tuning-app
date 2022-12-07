@@ -93,12 +93,12 @@
                                         @if(count($users)>0)
                                             <thead class="table-light">
                                             <tr>
-                                                <th>ID</th>
-                                                <th>User Name</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>{{Id}}</th>
+                                                <th>{{User_Name}}</th>
+                                                <th>{{Email}}</th>
+                                                <th>{{Roles}}</th>
+                                                <th>{{Status}}</th>
+                                                <th>{{Action}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -111,10 +111,10 @@
                                                     <td>{{$user->email}}</td>
                                                     <td>{{$user->getRoleNames()->implode(',')}}</td>
                                                     @if($user->status == 1)
-                                                        <td><span class="badge rounded-pill bg-success">Active</span>
+                                                        <td><span class="badge rounded-pill bg-success">{{Active}}</span>
                                                         </td>
                                                     @else
-                                                        <td><span class="badge rounded-pill bg-warning">Passive</span>
+                                                        <td><span class="badge rounded-pill bg-warning">{{Passive}}</span>
                                                         </td>
                                                     @endif
                                                     <td>
@@ -122,12 +122,12 @@
                                                             <a href="{{route('admin.user.edit',$user->uuid)}}"
                                                                class="text-warning" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Edit info" aria-label="Edit"><i
+                                                               data-bs-original-title="Edit info" aria-label="{{Edit}}"><i
                                                                     class="bi bi-pencil-fill"></i></a>
                                                             <a href="{{route('admin.user.delete',$user->uuid)}}"
                                                                class="text-danger" data-bs-toggle="tooltip"
                                                                data-bs-placement="bottom" title=""
-                                                               data-bs-original-title="Delete" aria-label="Delete"><i
+                                                               data-bs-original-title="Delete" aria-label="{{Delete}}"><i
                                                                     class="bi bi-trash-fill"></i></a>
                                                         </div>
                                                     </td>

@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 @section('title')
-    {{Car_Brand_Name}}
+    {{Car_Brands}}
 @endsection
 @section('admin')
     <main class="page-content">

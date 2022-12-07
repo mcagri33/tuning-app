@@ -60,7 +60,7 @@
                     <li> <a href="{{route('admin.cbrand.index')}}"><i class="bi bi-circle"></i>{{Car_Brands}}</a></li>
                 @endcan
                 @can('create car models')
-                    <li> <a href="#"><i class="bi bi-circle"></i>{{Car_Models}}</a></li>
+                    <li> <a href="{{route('admin.cmodel.index')}}"><i class="bi bi-circle"></i>{{Car_Models}}</a></li>
                 @endcan
                 @can('create car brains')
                     <li> <a href="#"><i class="bi bi-circle"></i>{{Car_Brains}}</a></li>

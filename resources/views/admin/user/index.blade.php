@@ -32,7 +32,7 @@
                                 <form class="row g-3" action="{{route('admin.user.store')}}" method="post">
                                     @csrf
                                     <div class="col-12">
-                                        <label class="form-label">User Name</label>
+                                        <label class="form-label">{{User_Name}}</label>
                                         <input type="text" class="form-control" name="name" value="{{old('name')}}"
                                                placeholder="User Name">
                                         @error("name")
@@ -41,7 +41,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Email</label>
+                                        <label class="form-label">{{Email}}</label>
                                         <input type="email" class="form-control" name="email" value="{{old('email')}}"
                                                placeholder="Email">
                                         @error("email")
@@ -50,7 +50,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">{{Password}}</label>
                                         <input type="password" class="form-control" name="password">
                                         @error("password")
                                         <span class="text-danger">{{$message}}</span>
@@ -58,7 +58,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="role" class="form-label">Roles</label>
+                                        <label for="role" class="form-label">{{Roles}}</label>
                                         <select id="role" name="role" autocomplete="role-name"
                                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                             @foreach ($roles as $role)
@@ -68,10 +68,10 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">{{Status}}</label>
                                         <select class="form-select" name="status">
-                                            <option value="1">Active</option>
-                                            <option value="0">Passive</option>
+                                            <option value="1">{{Active}}</option>
+                                            <option value="0">{{Passive}}</option>
                                         </select>
                                         @error("status")
                                         <span class="text-danger">{{$message}}</span>
@@ -80,7 +80,7 @@
 
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button class="btn btn-primary" type="submit">Add</button>
+                                            <button class="btn btn-primary" type="submit">{{Add}}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -137,7 +137,7 @@
                                             @endforeach
                                             </tbody>
                                         @else
-                                            No Data Found !
+                                            {{Found_Text}}
                                         @endif
                                     </table>
                                 </div>

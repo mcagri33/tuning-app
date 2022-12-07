@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('car_models', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid();
-            $table->integer('brand_id')->unsigned()->index();
+            $table->integer('brand_id')->nullable()->unsigned()->index();
             $table->string('name');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

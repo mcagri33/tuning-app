@@ -31,7 +31,7 @@
                                 <input type="hidden" name="id" value="{{$perFind->id}}">
 
                                 <div class="col-12">
-                                    <label class="form-label">Name</label>
+                                    <label class="form-label">{{Name}}</label>
                                     <input type="text" name="name" class="form-control" value="{{$perFind->name}}" placeholder="Name">
                                     @error("name")
                                     <span class="text-danger">{{$message}}</span>

@@ -6,7 +6,6 @@ use App\Helper\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\CarBrand;
 use App\Models\CarModel;
-use App\Models\Language;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,8 +20,6 @@ class CarModelController extends Controller
      */
     public function index()
     {
-
-
         Helpers::read_json();
         $cmodels = CarModel::paginate(10);
         $brands = CarBrand::all();
@@ -59,7 +56,9 @@ class CarModelController extends Controller
     {
         Helpers::read_json();
         $cmodelFind = CarModel::where('uuid', $uuid)->first();
-        return view('admin.setting.car.model.edit',compact('cmodelFind'));
+        $brands = CarBrand::all();
+
+        return view('admin.setting.car.model.edit',compact('cmodelFind','brands'));
     }
 
     /**

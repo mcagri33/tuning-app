@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\CarBrandController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\CarBrainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,21 @@ Route::group(['prefix' => 'panel/cmodel', 'middleware' => 'auth'], function () {
         ->name('admin.cmodel.update');
     Route::get('/delete/{id}', [CarModelController::class, 'destroy'])
         ->name('admin.cmodel.delete');
+});
+
+Route::group(['prefix' => 'panel/cbrain', 'middleware' => 'auth'], function () {
+    Route::get('/', [CarBrainController::class, 'index'])
+        ->name('admin.cbrain.index');
+    Route::post('/store', [CarBrainController::class, 'store'])
+        ->name('admin.cbrain.store');
+    Route::get('/edit/{uuid}', [CarBrainController::class, 'edit'])
+        ->name('admin.cbrain.edit');
+    Route::post('/update/{uuid}', [CarBrainController::class, 'update'])
+        ->name('admin.cbrain.update');
+    Route::get('/delete/{id}', [CarBrainController::class, 'destroy'])
+        ->name('admin.cbrain.delete');
+    Route::post('fetch-models', [CarBrainController::class, 'fetchModel']);
+
 });
 
 Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {

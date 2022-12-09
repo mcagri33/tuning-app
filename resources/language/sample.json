@@ -33,6 +33,8 @@
     "Car_Brand_Name" : "Car Brand Name",
     "Car_Model_Name" : "Car Model Name",
     "Car_Model_Select" : "Car Model Select",
+    "Car_Brand_Select" : "Car Brand Select",
+    "Car_Brain_Name" : "Car Brain Name",
     "User_Name" : "User Name",
     "Email" : "Email",
     "Role_Permissions" : "Role Permissions",

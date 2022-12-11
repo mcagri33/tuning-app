@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\CarBrandController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CarBrainController;
+use App\Http\Controllers\Admin\UserCreditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,15 @@ Route::group(['prefix' => 'panel/cbrain', 'middleware' => 'auth'], function () {
         ->name('admin.cbrain.delete');
     Route::post('fetch-models', [CarBrainController::class, 'fetchModel']);
 
+});
+
+Route::group(['prefix' => 'panel/ucredit', 'middleware' => 'auth'], function () {
+    Route::get('/history', [UserCreditController::class, 'index'])
+        ->name('admin.credit.history');
+    Route::get('/add', [UserCreditController::class, 'add'])
+        ->name('admin.cbrain.edit');
+    Route::post('/store', [UserCreditController::class, 'store'])
+        ->name('admin.cbrain.store');
 });
 
 Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {

@@ -69,7 +69,21 @@
         </li>
         @endcan
         <li class="menu-label">Modüller</li>
+        @can('credit')
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    </div>
+                    <div class="menu-title">{{Credit}}</div>
+                </a>
+                <ul>
+                    @can('create credit history')
+                        <li> <a href="{{route('admin.credit.history')}}"><i class="bi bi-circle"></i>{{Credit_History}}</a></li>
+                    @endcan
 
+                </ul>
+            </li>
+        @endcan
 
 
     </ul>

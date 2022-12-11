@@ -44,7 +44,15 @@
     "Car_Brains" : "Car Brains",
     "Role_Name" : "Role Name",
     "Permision_Name" : "Permision Name",
-    "Found_Text" : "No Data Found!"
+    "Found_Text" : "No Data Found!",
+    "Create_Date" : "Create Date",
+    "Amount" : "Amount",
+    "Payment_Type" : "Payment Type",
+    "Bank_Transfer" : "Bank Transfer",
+    "Credit_Cart" : "Credit Cart",
+    "Credit_History" : "Credit History",
+    "Credit" : "Credit"
+
 
 
 

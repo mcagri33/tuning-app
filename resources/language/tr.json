@@ -43,5 +43,14 @@
     "Car_Brains" : "Araç Beyinleri",
     "Role_Name" : "Rol Adı",
     "Permision_Name" : "İzin Adı",
-    "Found_Text" : "Data Bulunamadı!"
+    "Found_Text" : "Data Bulunamadı!",
+    "Create_Date" : "Oluşturulma Tarihi",
+    "Amount" : "Miktar",
+    "Payment_Type" : "Ödeme Türü",
+    "Bank_Transfer" : "Havale/Eft",
+    "Credit_Cart" : "Kredi Kartı",
+    "Credit_History" : "Kredi Geçmişi",
+    "Credit" : "Krediler"
+
+
 }

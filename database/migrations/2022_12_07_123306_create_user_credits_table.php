@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_credits', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->integer('amount');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->boolean('status')->default(1);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->softDeletes();
         });
     }
 

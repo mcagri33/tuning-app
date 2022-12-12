@@ -50,7 +50,8 @@
     "Bank_Transfer" : "Havale/Eft",
     "Credit_Cart" : "Kredi Kartı",
     "Credit_History" : "Kredi Geçmişi",
-    "Credit" : "Krediler"
+    "Credit" : "Krediler",
+    "Car_Model_Select" : "Model Seç"
 
 
 }

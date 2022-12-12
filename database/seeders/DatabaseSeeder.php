@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(PermisionSeeder::class);
         $this->call(LanguageSeeder::class);
-
+        $this->call(CurrenctSeeder::class);
     }
 }

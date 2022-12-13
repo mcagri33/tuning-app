@@ -65,6 +65,9 @@
                 @can('create car brains')
                     <li> <a href="{{route('admin.cbrain.index')}}"><i class="bi bi-circle"></i>{{Car_Brains}}</a></li>
                 @endcan
+                    @can('create currency')
+                        <li> <a href="{{route('admin.currency.index')}}"><i class="bi bi-circle"></i>{{Currency}}</a></li>
+                    @endcan
             </ul>
         </li>
         @endcan
@@ -80,12 +83,9 @@
                     @can('create credit history')
                         <li> <a href="{{route('admin.credit.history')}}"><i class="bi bi-circle"></i>{{Credit_History}}</a></li>
                     @endcan
-
                 </ul>
             </li>
         @endcan
-
-
     </ul>
     <!--end navigation-->
 </aside>

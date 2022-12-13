@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CarBrandController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\CarBrainController;
 use App\Http\Controllers\Admin\UserCreditController;
+use App\Http\Controllers\Admin\CurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +107,19 @@ Route::group(['prefix' => 'panel/cbrain', 'middleware' => 'auth'], function () {
         ->name('admin.cbrain.delete');
     Route::post('fetch-models', [CarBrainController::class, 'fetchModel']);
 
+});
+
+Route::group(['prefix' => 'panel/currency', 'middleware' => 'auth'], function () {
+    Route::get('/', [CurrencyController::class, 'index'])
+        ->name('admin.currency.index');
+    Route::post('/store', [CurrencyController::class, 'store'])
+        ->name('admin.currency.store');
+    Route::get('/edit/{uuid}', [CurrencyController::class, 'edit'])
+        ->name('admin.currency.edit');
+    Route::post('/update/{uuid}', [CurrencyController::class, 'update'])
+        ->name('admin.currency.update');
+    Route::get('/delete/{id}', [CurrencyController::class, 'destroy'])
+        ->name('admin.currency.delete');
 });
 
 Route::group(['prefix' => 'panel/ucredit', 'middleware' => 'auth'], function () {

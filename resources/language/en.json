@@ -51,8 +51,12 @@
     "Bank_Transfer" : "Bank Transfer",
     "Credit_Cart" : "Credit Cart",
     "Credit_History" : "Credit History",
-    "Credit" : "Credit"
-
+    "Credit" : "Credit",
+    "Currency" : "Currency",
+    "Currency_name" : "Currency Name",
+    "Currency_code" : "Currency Code",
+    "Currency_symbol" : "Currency Symbol",
+    "Currency_value" : "Currency Value"
 
 
 

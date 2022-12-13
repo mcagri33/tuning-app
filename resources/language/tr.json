@@ -51,7 +51,11 @@
     "Credit_Cart" : "Kredi Kartı",
     "Credit_History" : "Kredi Geçmişi",
     "Credit" : "Krediler",
-    "Car_Model_Select" : "Model Seç"
-
+    "Car_Model_Select" : "Model Seç",
+    "Currency" : "Para Birimleri",
+    "Currency_name" : "Para Birim Adı",
+    "Currency_code" : "Para Birim Kodu",
+    "Currency_symbol" : "Para Birim Sembolü",
+    "Currency_value" : "Para Birim Değeri"
 
 }

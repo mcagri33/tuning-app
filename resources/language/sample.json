@@ -57,8 +57,16 @@
     "Currency_name" : "Currency Name",
     "Currency_code" : "Currency Code",
     "Currency_symbol" : "Currency Symbol",
-    "Currency_value" : "Currency Value"
-
+    "Currency_value" : "Currency Value",
+    "Payment_Method" : "Payment Method",
+    "Transfer": "Transfer",
+    "Credit_Add" : "Credit Add",
+    "Price" : "Price",
+    "Credit_Total" : "Total Credit",
+    "Credit_Status_Pending" : "Credit Status Pending",
+    "Payment_Done" : "Payment Done",
+    "Payment_Pending" : "Payment Pending",
+    "Payment_Cancel" : "Payment Cancel"
 
 
 

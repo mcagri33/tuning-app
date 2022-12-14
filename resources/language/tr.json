@@ -56,6 +56,14 @@
     "Currency_name" : "Para Birim Adı",
     "Currency_code" : "Para Birim Kodu",
     "Currency_symbol" : "Para Birim Sembolü",
-    "Currency_value" : "Para Birim Değeri"
-
+    "Currency_value" : "Para Birim Değeri",
+    "Payment_Method" : "Ödeme Yöntemi",
+    "Transfer": "Havale/Eft",
+    "Credit_Add" : "Kredi Yükle",
+    "Price" : "Fiyat",
+    "Credit_Total" : "Toplam Kredi",
+    "Credit_Status_Pending" : "Onay Bekleyen Krediler",
+    "Payment_Done" : "Ödeme Tamamlandı",
+    "Payment_Pending" : "Ödeme Bekleniyor",
+    "Payment_Cancel" : "Ödeme İptal Edildi"
 }

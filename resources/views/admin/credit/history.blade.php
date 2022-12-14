@@ -18,6 +18,72 @@
             </div>
         </div>
         <!--end breadcrumb-->
+        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+            <div class="col">
+                <div class="card rounded-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">{{Credit_Total}}</p>
+                                <h4 class="mb-0">{{$ucredits->where('status',1)->sum('amount')}} </h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-primary text-white">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card rounded-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">{{Credit_Status_Pending}}</p>
+                                <h4 class="mb-0">{{$ucredits->where('status',2)->sum('amount')}} </h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-success text-white">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {{-- <div class="col">
+                <div class="card rounded-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">{{Credit_Status_Pending}}</p>
+                                <h4 class="mb-0">875</h4>
+                                <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>12.3% from last week</span></p>
+                            </div>
+                            <div class="ms-auto widget-icon bg-orange text-white">
+                                <i class="bi bi-emoji-heart-eyes"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card rounded-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">New Clients</p>
+                                <h4 class="mb-0">9853</h4>
+                                <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>32.7% from last week</span></p>
+                            </div>
+                            <div class="ms-auto widget-icon bg-info text-white">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>--}}
+
+        </div><!--end row-->
 
         @include('admin.layouts.alert')
         <div class="card">
@@ -30,38 +96,117 @@
                         <div class="card border shadow-none w-100">
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    @if(Auth::check() && Auth::user()->hasRole('admin'))
                                     <table class="table align-middle">
-                                        @if(count($ucredits)>0)
                                             <thead class="table-light">
                                             <tr>
                                                 <th>{{Id}}</th>
+                                                <th>{{User_Name}}</th>
                                                 <th>{{Create_Date}}</th>
                                                 <th>{{Amount}}</th>
+                                                <th>{{Currency}}</th>
                                                 <th>{{Payment_Type}}</th>
-
+                                                <th>{{Status}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php $count = 1; ?>
-                                            @foreach($ucredits as $ucredit)
+                                            @foreach($userAlls as $data)
                                                 <tr>
-                                                    <td>{{$ucredits ->perPage()*($ucredits->currentPage()-1)+$count}}</td>
+                                                    <td>{{$userAlls ->perPage()*($userAlls->currentPage()-1)+$count}}</td>
                                                     <?php $count++; ?>
-
-                                                    <td>{{$ucredit->created_at->format('DMY')}}</td>
-                                                    <td>{{$ucredit->Amount}}</td>
+                                                    <td>{{$data->user->name}}</td>
+                                                    <td>{{$data->created_at->format('d-m-Y')}}</td>
+                                                    <td>{{$data->amount}}</td>
                                                     <td>
-                                                        @if($ucredit == 1)
+                                                        @if($data->currency)
+                                                            {{$data->currency->symbol}}
+                                                        @else
+                                                           -
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($data->type == 1)
                                                             {{Bank_Transfer}}
                                                         @else
                                                             {{Credit_Cart}}
                                                         @endif
                                                     </td>
+                                                    <td>
+                                                        @if($data->status == 1)
+                                                        <span class="badge rounded-pill bg-success">
+                                                            {{Payment_Done}}
+                                                            </span>
+                                                        @elseif($data->status == 2)
+                                                            <span class="badge rounded-pill bg-warning">
+                                                            {{Payment_Pending}}
+                                                            </span>
+                                                        @elseif($data->status == 3)
+                                                            <span class="badge rounded-pill bg-danger">
+                                                            {{Payment_Cancel}}
+                                                            </span>
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    {!! $userAlls->links() !!}
+                                </div>
                                         @else
-                                            {{Found_Text}}
+                                    <table class="table align-middle">
+                                                <thead class="table-light">
+                                                <tr>
+                                                    <th>{{Id}}</th>
+                                                    <th>{{Create_Date}}</th>
+                                                    <th>{{Amount}}</th>
+                                                    <th>{{Currency}}</th>
+                                                    <th>{{Payment_Type}}</th>
+                                                    <th>{{Status}}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php $count = 1; ?>
+                                                @foreach($ucredits as $ucredit)
+                                                    <tr>
+                                                        <td>{{$ucredits ->perPage()*($ucredits->currentPage()-1)+$count}}</td>
+                                                        <?php $count++; ?>
+                                                        <td>{{$ucredit->created_at->format('d-m-Y')}}</td>
+                                                        <td>{{$ucredit->amount}}</td>
+                                                        <td>
+                                                            @if($ucredit->currency)
+                                                                {{$ucredit->currency->symbol}}
+                                                            @else
+                                                                -
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if($ucredit->type == 1)
+                                                                {{Bank_Transfer}}
+                                                            @else
+                                                                {{Credit_Cart}}
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if($ucredit->status == 1)
+                                                                <span class="badge rounded-pill bg-success">
+                                                            {{Payment_Done}}
+                                                            </span>
+                                                            @elseif($ucredit->status == 2)
+                                                                <span class="badge rounded-pill bg-warning">
+                                                            {{Payment_Pending}}
+                                                            </span>
+                                                            @elseif($ucredit->status == 3)
+                                                                <span class="badge rounded-pill bg-danger">
+                                                            {{Payment_Cancel}}
+                                                            </span>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
                                         @endif
                                     </table>
                                 </div>

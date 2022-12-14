@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\Helpers;
 use App\Http\Controllers\Controller;
+use App\Models\Currency;
 use App\Models\UserCredit;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Str;
+
 class UserCreditController extends Controller
 {
 
@@ -17,32 +20,45 @@ class UserCreditController extends Controller
             $userId =  Auth::id();
         }
         //dd($userId);
-        $ucredits = UserCredit::where('user_id',$userId)->paginate(15);
-
-        return view('admin.credit.history',compact('ucredits'));
+        $ucredits = UserCredit::where('user_id',$userId)->orderBy('created_at','desc')->paginate(15);
+        $userAlls = UserCredit::orderBy('created_at', 'desc')->paginate(15);
+        return view('admin.credit.history',compact('ucredits','userAlls'));
 
     }
 
     public function add()
     {
         Helpers::read_json();
-
-        return view('admin.credit.add');
+        $currecies = Currency::where('status',1)->get();
+        return view('admin.credit.add',compact('currecies'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'amount' =>  'required|numeric|between:1,99999999999999',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/'
+        ],
+        [
+            'price.required' => 'Price is required',
+            'price.regex' => 'Price have to be number'
         ]);
-        UserCredit::create([
-            'amount' => $request->amount,
+
+        if (Auth::check()) {
+            $userId =  Auth::id();
+        }
+
+       $credit = UserCredit::create([
+            'uuid' => Str::uuid(),
+            'amount' => $request->price,
             'price' => $request->price,
-            'status' => $request->status,
-            'user_id' => $this->userid ,
+            'user_id' => $userId ,
+            'currency_id' => $request->currency_id,
             'type' => $request->type,
         ]);
+        if ($request->type == 1){
+            $credit->status = 2;
+            $credit->update();
+        }
 
         if ($request->type == 1){
             return redirect()->route('admin.ucredit.payment');
@@ -51,4 +67,6 @@ class UserCreditController extends Controller
         }
 
     }
+
+
 }

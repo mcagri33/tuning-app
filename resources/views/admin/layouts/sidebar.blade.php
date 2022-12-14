@@ -81,8 +81,11 @@
                 </a>
                 <ul>
                     @can('create credit history')
-                        <li> <a href="{{route('admin.credit.history')}}"><i class="bi bi-circle"></i>{{Credit_History}}</a></li>
+                        <li> <a href="{{route('admin.ucredit.history')}}"><i class="bi bi-circle"></i>{{Credit_History}}</a></li>
                     @endcan
+                        @can('create credit')
+                            <li> <a href="{{route('admin.ucredit.add')}}"><i class="bi bi-circle"></i>{{Credit_Add}}</a></li>
+                        @endcan
                 </ul>
             </li>
         @endcan

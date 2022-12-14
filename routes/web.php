@@ -124,11 +124,11 @@ Route::group(['prefix' => 'panel/currency', 'middleware' => 'auth'], function ()
 
 Route::group(['prefix' => 'panel/ucredit', 'middleware' => 'auth'], function () {
     Route::get('/history', [UserCreditController::class, 'index'])
-        ->name('admin.credit.history');
+        ->name('admin.ucredit.history');
     Route::get('/add', [UserCreditController::class, 'add'])
-        ->name('admin.cbrain.edit');
+        ->name('admin.ucredit.add');
     Route::post('/store', [UserCreditController::class, 'store'])
-        ->name('admin.cbrain.store');
+        ->name('admin.ucredit.store');
 });
 
 Route::group(['prefix' => 'panel/language', 'middleware' => 'auth'], function () {

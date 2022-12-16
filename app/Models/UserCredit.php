@@ -16,7 +16,8 @@ class UserCredit extends Model
         'status',
         'currency_id',
         'type',
-        'uuid'
+        'uuid',
+        'language_id'
     ];
 
     public function user()
@@ -27,5 +28,10 @@ class UserCredit extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class, 'currency_id');
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_id');
     }
 }

@@ -65,5 +65,7 @@
     "Credit_Status_Pending" : "Onay Bekleyen Krediler",
     "Payment_Done" : "Ödeme Tamamlandı",
     "Payment_Pending" : "Ödeme Bekleniyor",
-    "Payment_Cancel" : "Ödeme İptal Edildi"
+    "Payment_Cancel" : "Ödeme İptal Edildi",
+    "Language_Select" : "Dil Seçiniz"
+
 }

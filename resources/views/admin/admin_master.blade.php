@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{asset('assets/admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css')}}">
     <link href="{{asset('assets/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/admin/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/admin/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/admin/plugins/select2/css/select2-bootstrap4.css')}}" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="{{asset('assets/admin/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/admin/css/bootstrap-extended.css')}}" rel="stylesheet" />
@@ -111,7 +113,8 @@
 <script src="{{asset('assets/admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js')}}"></script>
 <script src="{{asset('assets/admin/js/form-date-time-pickes.js')}}"></script>
 <script src="{{asset('assets/admin/plugins/input-tags/js/tagsinput.js')}}"></script>
-
+<script src="{{asset('assets/admin/plugins/select2/js/select2.min.js')}}"></script>
+<script src="{{asset('assets/admin/js/form-select2.js')}}"></script>
 </body>
 
 </html>

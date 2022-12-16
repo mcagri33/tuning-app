@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->string('name', 50)->unique();
-            $table->string('code', 50)->unique();
+            $table->integer('language_id')->default(1);
+            $table->string('name', 50);
+            $table->string('code', 50);
             $table->string('symbol', 5)->nullable();
             $table->bigInteger('value')->default(0);
             $table->boolean('status')->default(1);

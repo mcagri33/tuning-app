@@ -9,15 +9,22 @@ class Currency extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'uuid',
         'name',
         'code',
         'symbol',
         'value',
-        'status'
+        'status',
+        'language_id'
     ];
 
     public function credit()
     {
         return $this->hasMany(UserCredit::class);
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_id');
     }
 }

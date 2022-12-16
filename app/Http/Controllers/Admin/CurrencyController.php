@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
+use App\Models\Language;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,9 +21,9 @@ class CurrencyController extends Controller
     public function index()
     {
         Helpers::read_json();
-
+        $languages = Language::all();
         $currentcies = Currency::orderBy('status','desc')->paginate(15);
-        return view('admin.setting.currency.index',compact('currentcies'));
+        return view('admin.setting.currency.index',compact('currentcies','languages'));
     }
 
     /**
@@ -39,16 +40,21 @@ class CurrencyController extends Controller
             'symbol' =>  'required',
         ]);
 
-
-         Currency::create([
-            'uuid' => Str::uuid(),
-            'name' => $request->name,
-            'code' => $request->code,
-            'symbol' => $request->symbol,
-            'value' => $request->value,
-            'status' => $request->status,
-        ]);
-
+        $languageId = $request->language_id;
+        //dd($languageId);
+        foreach ($languageId as $lang)
+        {
+            Currency::create([
+                'uuid' => Str::uuid(),
+                'name' => $request->name,
+                'code' => $request->code,
+                'symbol' => $request->symbol,
+                'value' => $request->value,
+                'status' => $request->status,
+                'language_id' => $lang
+            ]);
+        }
+        //dd($lang);
         return redirect()->route('admin.currency.index')->with('success', 'Success Created!');
 
     }
@@ -62,8 +68,9 @@ class CurrencyController extends Controller
     public function edit($uuid)
     {
         Helpers::read_json();
+        $languages = Language::all();
         $curFind = Currency::where('uuid', $uuid)->first();
-        return view('admin.setting.currency.edit',compact('curFind'));
+        return view('admin.setting.currency.edit',compact('curFind','languages'));
     }
 
     /**
@@ -79,15 +86,18 @@ class CurrencyController extends Controller
             'code' =>  'required',
             'symbol' =>  'required',
         ]);
-
-
         $curId = Currency::where('uuid', $uuid)->first();
-        $curId->name = $request->name;
-        $curId->code = $request->code;
-        $curId->symbol = $request->symbol;
-        $curId->value = $request->value;
-        $curId->status = $request->status;
-        $curId->update();
+        $languageId = $request->language_id;
+
+        foreach ($languageId as $lang){
+            $curId->name = $request->name;
+            $curId->code = $request->code;
+            $curId->symbol = $request->symbol;
+            $curId->value = $request->value;
+            $curId->status = $request->status;
+            $curId->language_id = $lang;
+            $curId->update();
+        }
         return redirect()->route('admin.currency.index')->with('success', 'Success Updated!');
     }
 

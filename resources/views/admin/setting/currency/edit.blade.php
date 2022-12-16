@@ -63,6 +63,18 @@
                                 </div>
 
                                 <div class="col-12">
+                                    <label class="form-label">{{Language_Select}}</label>
+                                    <select class="multiple-select" data-placeholder="Choose anything" name="language_id[]" multiple="multiple">
+                                        @foreach($languages as $language)
+                                            <option value="{{$language->id}}" {{$curFind->language_id = $language->id ? "selected" : "" }}>{{$language->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error("language_id")
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
                                     <label class="form-label">{{Status}}</label>
                                     <select class="form-select" name="status">
                                         <option value="1" {{$curFind->status == 1 ? "selected" : ""}}>{{Active}}</option>

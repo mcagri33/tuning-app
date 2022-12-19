@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
@@ -145,7 +146,13 @@ class LanguageController extends Controller
     {
 
         $langDelete =  Language::where('uuid', $uuid)->first();
+        $id = $langDelete['id'];
         $langDelete->delete();
+        /*$logData = $fileJson::update([
+            'proccess_id' => $id,
+            'user_id' => Auth::user()->id,
+            'proccess' => 'Destroy'
+        ]);*/
         if ($request->is_default == 'Yes') {
             DB::table('languages')->update(['is_default' => 'No']);
         }

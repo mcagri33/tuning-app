@@ -34,6 +34,7 @@ class UserCreditController extends Controller
 
         //dd($userId);
         $ucredits = UserCredit::where('language_id',$current_language_id)->where('user_id',$userId)->orderBy('created_at','desc')->paginate(15);
+
         $userAlls = UserCredit::where('language_id',$current_language_id)->orderBy('created_at', 'desc')->paginate(15);
         return view('admin.credit.history',compact('ucredits','userAlls'));
 
@@ -67,10 +68,20 @@ class UserCreditController extends Controller
             $userId =  Auth::id();
         }
 
-       $credit = UserCredit::create([
+        if(!session()->get('session_short_name')) {
+            $current_short_name = Language::where('is_default','Yes')->first()->short_name;
+        } else {
+            $current_short_name = session()->get('session_short_name');
+        }
+
+        $current_language_id = Language::where('short_name',$current_short_name)->first()->id;
+
+
+        $credit = UserCredit::create([
             'uuid' => Str::uuid(),
             'amount' => $request->price,
             'price' => $request->price,
+            'language_id' => $current_language_id,
             'user_id' => $userId ,
             'currency_id' => $request->currency_id,
             'type' => $request->type,
